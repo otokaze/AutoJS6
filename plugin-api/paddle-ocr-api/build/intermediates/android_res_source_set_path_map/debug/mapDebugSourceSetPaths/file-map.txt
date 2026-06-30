@@ -1,0 +1,8 @@
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-pngs-0 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/build/generated/res/pngs/debug
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-updated_navigation_xml-1 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/build/generated/updated_navigation_xml/debug
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-mergeDebugResources-2 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-mergeDebugResources-3 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-debug-4 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/build/intermediates/merged_res/debug/mergeDebugResources
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-debug-5 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/build/intermediates/packaged_res/debug/packageDebugResources
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-debug-6 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/src/debug/res
+org.autojs.plugin.paddle.ocr.api.paddle-ocr-api-main-7 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-api/src/main/res

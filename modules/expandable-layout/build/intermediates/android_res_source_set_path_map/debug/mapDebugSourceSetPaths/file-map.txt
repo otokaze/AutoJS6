@@ -1,0 +1,8 @@
+com.github.aakira.expandablelayout.expandable-layout-pngs-0 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/build/generated/res/pngs/debug
+com.github.aakira.expandablelayout.expandable-layout-updated_navigation_xml-1 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/build/generated/updated_navigation_xml/debug
+com.github.aakira.expandablelayout.expandable-layout-mergeDebugResources-2 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.github.aakira.expandablelayout.expandable-layout-mergeDebugResources-3 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.github.aakira.expandablelayout.expandable-layout-debug-4 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/build/intermediates/merged_res/debug/mergeDebugResources
+com.github.aakira.expandablelayout.expandable-layout-debug-5 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/build/intermediates/packaged_res/debug/packageDebugResources
+com.github.aakira.expandablelayout.expandable-layout-debug-6 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/src/debug/res
+com.github.aakira.expandablelayout.expandable-layout-main-7 /Users/Otokaze/Android/src/AutoJs6/modules/expandable-layout/src/main/res

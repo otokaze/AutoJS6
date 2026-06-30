@@ -1,0 +1,8 @@
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-pngs-0 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/build/generated/res/pngs/debug
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-updated_navigation_xml-1 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/build/generated/updated_navigation_xml/debug
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-mergeDebugResources-2 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-mergeDebugResources-3 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-debug-4 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/build/intermediates/merged_res/debug/mergeDebugResources
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-debug-5 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/build/intermediates/packaged_res/debug/packageDebugResources
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-debug-6 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/src/debug/res
+com.yqritc.recyclerviewflexibledivider.recyclerview-flexibledivider-main-7 /Users/Otokaze/Android/src/AutoJs6/modules/recyclerview-flexibledivider/src/main/res
