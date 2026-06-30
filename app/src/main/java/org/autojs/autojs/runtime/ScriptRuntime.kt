@@ -564,18 +564,18 @@ class ScriptRuntime private constructor(builder: Builder) {
             }
         })
 
-        ignoresException({ CoreWebSocket.onExit("Triggered by $TAG") })
+        ignoresException({ CoreWebSocket.onExit(this, "Triggered by $TAG") })
 
         // @Hint by 抠脚本人 (https://github.com/little-alei) on Jul 10, 2023.
         //  ! 清空无障碍事件.
         //  ! en-US (translated by SuperMonster003 on Jul 29, 2024):
         //  ! To clear accessibility event callbacks.
-        ignoresException({ AccessibilityService.clearAccessibilityEventCallback() })
+        ignoresException({ AccessibilityService.clearAccessibilityEventCallbacks(this) })
 
-        ignoresException({ RootUtils.resetRuntimeOverriddenRootModeState() })
+        ignoresException({ RootUtils.resetRuntimeOverriddenRootModeState(this) })
 
         /* 回收全部记录的 ImageWrapper 实例. */
-        ignoresException({ CoreImageWrapper.recycleAll() })
+        ignoresException({ CoreImageWrapper.recycleAll(this) })
 
         /* 清除 interrupt 状态. */
         ignoresException({ ThreadCompat.interrupted() })
@@ -593,7 +593,7 @@ class ScriptRuntime private constructor(builder: Builder) {
         ignoresException({ loopers.recycle() })
         ignoresException({ this.recycleShell() })
         ignoresException({ images.releaseScreenCapturer() })
-        ignoresException({ images.stopScreenCapturerForegroundService() })
+        ignoresException({ images.stopScreenCapturerForegroundServiceIfUnused() })
         ignoresException({ ocrMLKit.release() })
         ignoresException({ ocrPaddle.release() })
         ignoresException({ sensors.unregisterAll() })

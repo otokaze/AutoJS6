@@ -1,5 +1,7 @@
 package org.autojs.autojs.runtime.api.augment.autojs
 
+import org.autojs.autojs.AutoJs
+import org.autojs.autojs.engine.RhinoJavaScriptEngine
 import org.autojs.autojs.rhino.ProxyObject
 import org.autojs.autojs.rhino.ProxyObject.Companion.PROXY_GETTER_KEY
 import org.autojs.autojs.runtime.ScriptRuntime
@@ -134,9 +136,14 @@ class Autojs(private val scriptRuntime: ScriptRuntime) : Augmentable() {
                 else -> false
             }
 
-            fun setForceRoot() = RootUtils.setRootMode(RootMode.FORCE_ROOT, isWriteIntoPref)
-            fun setForceNonRoot() = RootUtils.setRootMode(RootMode.FORCE_NON_ROOT, isWriteIntoPref)
-            fun setAutoDetect() = RootUtils.setRootMode(RootMode.AUTO_DETECT, isWriteIntoPref)
+            val runtime = AutoJs.instance.scriptEngineService.engines
+                .filterIsInstance<RhinoJavaScriptEngine>()
+                .firstOrNull { it.thread == Thread.currentThread() }
+                ?.runtime
+
+            fun setForceRoot() = RootUtils.setRootMode(RootMode.FORCE_ROOT, isWriteIntoPref, runtime)
+            fun setForceNonRoot() = RootUtils.setRootMode(RootMode.FORCE_NON_ROOT, isWriteIntoPref, runtime)
+            fun setAutoDetect() = RootUtils.setRootMode(RootMode.AUTO_DETECT, isWriteIntoPref, runtime)
 
             when (modeArg) {
                 is Number -> when (coerceIntNumber(modeArg)) {

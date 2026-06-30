@@ -156,7 +156,7 @@ open class ImageWrapper : Recyclable, MonitorResource {
     }
 
     private fun addToList(image: Any) {
-        imageList.add(WeakReference(image))
+        imageList.add(ImageEntry(mScriptRuntime, WeakReference(image)))
     }
 
     fun saveTo(path: String): Boolean {
@@ -301,19 +301,37 @@ open class ImageWrapper : Recyclable, MonitorResource {
 
     companion object {
 
-        private val imageList = ArrayList<WeakReference<Any>>()
+        private data class ImageEntry(val runtime: ScriptRuntime, val ref: WeakReference<Any>)
+
+        private val imageList = ArrayList<ImageEntry>()
+
+        private fun recycleEntry(entry: ImageEntry) {
+            when (val o = entry.ref.get()) {
+                is Recyclable -> o.recycle()
+                is Bitmap -> o.recycle()
+                is org.opencv.core.Mat -> OpenCVHelper.release(o)
+                is Image -> o.close()
+            }
+        }
 
         @JvmStatic
         @Synchronized
-        fun recycleAll() {
-            imageList.forEach {
-                when (val o = it.get()) {
-                    is Recyclable -> o.recycle()
-                    is Bitmap -> o.recycle()
-                    is org.opencv.core.Mat -> OpenCVHelper.release(o)
-                    is Image -> o.close()
+        fun recycleAll(scriptRuntime: ScriptRuntime) {
+            val iter = imageList.iterator()
+            while (iter.hasNext()) {
+                val entry = iter.next()
+                if (entry.runtime === scriptRuntime) {
+                    recycleEntry(entry)
+                    iter.remove()
                 }
             }
+        }
+
+        @JvmStatic
+        @Synchronized
+        @Deprecated("Recycles images from all runtimes; use recycleAll(ScriptRuntime) instead.")
+        fun recycleAll() {
+            imageList.forEach { recycleEntry(it) }
             imageList.clear()
         }
 

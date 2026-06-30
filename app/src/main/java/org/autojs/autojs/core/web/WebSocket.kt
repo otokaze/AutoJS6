@@ -17,7 +17,7 @@ import java.lang.ref.WeakReference
  */
 // @Reference to kkevsekk1/AutoX (https://github.com/kkevsekk1/AutoX) by SuperMonster003 on Apr 30, 2023.
 class WebSocket @JvmOverloads constructor(
-    scriptRuntime: ScriptRuntime,
+    private val scriptRuntime: ScriptRuntime,
     val client: OkHttpClient,
     val url: String,
     isInCurrentThread: Boolean = true,
@@ -241,6 +241,22 @@ class WebSocket @JvmOverloads constructor(
         private const val DEFAULT_EXIT_ON_CLOSE_TIMEOUT = 0L
 
         @JvmStatic
+        fun onExit(scriptRuntime: ScriptRuntime, reason: String?) {
+            val wsList = instances.mapNotNull { ref -> ref.get() }.filter { it.scriptRuntime === scriptRuntime }
+            if (wsList.isNotEmpty()) {
+                Log.d(TAG, "onExit ready")
+                wsList.forEach {
+                    val r = {
+                        Log.d(TAG, "onExit triggered after delayed")
+                        if (it.isExitOnClose) it.close(CODE_CLOSE_NORMAL, reason)
+                    }
+                    AutoJs.instance.uiHandler.postDelayed(r, it.exitOnCloseTimeout)
+                }
+            }
+        }
+
+        @JvmStatic
+        @Deprecated("Affects all runtimes; use onExit(ScriptRuntime, String?) instead.")
         fun onExit(reason: String?) {
             val wsList = instances.mapNotNull { ref -> ref.get() }
             if (wsList.isNotEmpty()) {

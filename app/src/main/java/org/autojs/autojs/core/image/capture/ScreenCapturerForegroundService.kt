@@ -6,9 +6,12 @@ import android.content.pm.ServiceInfo
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
+import org.autojs.autojs.runtime.ScriptRuntime
 import org.autojs.autojs.tool.ForegroundServiceCreator
 import org.autojs.autojs.util.ForegroundServiceUtils.FOREGROUND_SERVICE_TYPE_UNKNOWN
 import org.autojs.autojs6.R
+import java.util.Collections
+import java.util.WeakHashMap
 
 /**
  * Created by SuperMonster003 on Apr 10, 2022.
@@ -61,6 +64,25 @@ class ScreenCapturerForegroundService : Service() {
         const val NOTIFICATION_ID = 0xCF
 
         var instance: ScreenCapturerForegroundService? = null
+
+        private val activeScreenCaptureRuntimes: MutableSet<ScriptRuntime> = Collections.synchronizedSet(
+            Collections.newSetFromMap(WeakHashMap<ScriptRuntime, Boolean>())
+        )
+
+        @JvmStatic
+        fun onScreenCaptureActive(runtime: ScriptRuntime) {
+            activeScreenCaptureRuntimes.add(runtime)
+        }
+
+        @JvmStatic
+        fun onScreenCaptureReleased(runtime: ScriptRuntime) {
+            if (!activeScreenCaptureRuntimes.remove(runtime)) {
+                return
+            }
+            if (activeScreenCaptureRuntimes.isEmpty()) {
+                stopService()
+            }
+        }
 
         fun stopService() {
             instance?.stopSelf()

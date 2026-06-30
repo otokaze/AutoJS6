@@ -235,6 +235,7 @@ public class Images {
                             );
                             mScreenCapturer = new ScreenCapturer(mContext, intent, options, handler);
                             mScreenCapturer.setImageCaptureCallback(mOnScreenCaptureAvailableListener);
+                            ScreenCapturerForegroundService.onScreenCaptureActive(mScriptRuntime);
                             promiseAdapter.resolve(true);
                         } catch (SecurityException ex) {
                             promiseAdapter.reject(ex);
@@ -522,6 +523,13 @@ public class Images {
                 mPreCaptureImage.recycleInternal();
                 mPreCaptureImage = null;
             }
+            releaseScreenCaptureRequester();
+        }
+    }
+
+    public void stopScreenCapturerForegroundServiceIfUnused() {
+        ScreenCapturerForegroundService.onScreenCaptureReleased(mScriptRuntime);
+        if (mScreenCaptureRequester != null) {
             releaseScreenCaptureRequester();
         }
     }

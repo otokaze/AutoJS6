@@ -1,8 +1,0 @@
-com.huaban.jieba.jieba-analysis-pngs-0 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/build/generated/res/pngs/debug
-com.huaban.jieba.jieba-analysis-updated_navigation_xml-1 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/build/generated/updated_navigation_xml/debug
-com.huaban.jieba.jieba-analysis-mergeDebugResources-2 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-com.huaban.jieba.jieba-analysis-mergeDebugResources-3 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-com.huaban.jieba.jieba-analysis-debug-4 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/build/intermediates/merged_res/debug/mergeDebugResources
-com.huaban.jieba.jieba-analysis-debug-5 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/build/intermediates/packaged_res/debug/packageDebugResources
-com.huaban.jieba.jieba-analysis-debug-6 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/src/debug/res
-com.huaban.jieba.jieba-analysis-main-7 /Users/Otokaze/Android/src/AutoJs6/modules/jieba-analysis/src/main/res

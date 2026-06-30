@@ -1,8 +1,0 @@
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-pngs-0 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/build/generated/res/pngs/debug
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-updated_navigation_xml-1 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/build/generated/updated_navigation_xml/debug
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-mergeDebugResources-2 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-mergeDebugResources-3 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-debug-4 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/build/intermediates/merged_res/debug/mergeDebugResources
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-debug-5 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/build/intermediates/packaged_res/debug/packageDebugResources
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-debug-6 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/src/debug/res
-com.baidu.paddle.lite.ocr.paddle-ocr-engine-main-7 /Users/Otokaze/Android/src/AutoJs6/plugin-api/paddle-ocr-engine/src/main/res

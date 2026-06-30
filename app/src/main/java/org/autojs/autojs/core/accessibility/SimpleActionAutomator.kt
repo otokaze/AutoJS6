@@ -198,7 +198,7 @@ class SimpleActionAutomator(private val accessibilityBridge: AccessibilityBridge
     //  ! zh-CN: 参考 Auto.js Pro.
     fun registerEvent(eventName: String, callback: AccessibilityEventCallback?) {
         ensureService()
-        AccessibilityService.instance?.addAccessibilityEventCallback(eventName, callback)
+        AccessibilityService.instance?.addAccessibilityEventCallback(scriptRuntime, eventName, callback)
     }
 
     // @Created by 抠脚本人 on Jul 10, 2023.

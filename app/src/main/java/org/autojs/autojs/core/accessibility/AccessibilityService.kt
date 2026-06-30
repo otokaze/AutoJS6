@@ -11,9 +11,12 @@ import org.autojs.autojs.core.accessibility.SimpleActionAutomator.Companion.Acce
 import org.autojs.autojs.core.automator.AccessibilityEventWrapper
 import org.autojs.autojs.event.EventDispatcher
 import org.autojs.autojs.core.pref.Language
+import org.autojs.autojs.runtime.ScriptRuntime
 import org.autojs.autojs.ui.main.drawer.DrawerFragment.Companion.Event.AccessibilityServiceStateChangedEvent
 import org.greenrobot.eventbus.EventBus
+import java.util.Collections
 import java.util.TreeMap
+import java.util.WeakHashMap
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -48,12 +51,26 @@ open class AccessibilityService : android.accessibilityservice.AccessibilityServ
         }
     }
 
+    fun addAccessibilityEventCallback(runtime: ScriptRuntime, name: String, callback: AccessibilityEventCallback?) {
+        val type = eventNameToType(name)
+        eventBox[type] = callback
+        synchronized(runtimeEventTypes) {
+            runtimeEventTypes.getOrPut(runtime) { mutableSetOf() }.add(type)
+        }
+    }
+
     fun addAccessibilityEventCallback(name: String, callback: AccessibilityEventCallback?) {
         eventBox[eventNameToType(name)] = callback
     }
 
     fun removeAccessibilityEventCallback(name: String) {
         eventBox.remove(eventNameToType(name))
+    }
+
+    fun clearAccessibilityEventCallbacksForRuntime(runtime: ScriptRuntime) {
+        synchronized(runtimeEventTypes) {
+            runtimeEventTypes.remove(runtime)?.forEach { eventBox.remove(it) }
+        }
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
@@ -145,6 +162,7 @@ open class AccessibilityService : android.accessibilityservice.AccessibilityServ
         private val delegates = TreeMap<Int, AccessibilityDelegate>()
         private var containsAllEventTypes = false
         private val eventTypes = HashSet<Int>()
+        private val runtimeEventTypes = Collections.synchronizedMap(WeakHashMap<ScriptRuntime, MutableSet<Int>>())
 
         private val LOCK = ReentrantLock()
         private val ENABLED = LOCK.newCondition()
@@ -208,8 +226,17 @@ open class AccessibilityService : android.accessibilityservice.AccessibilityServ
         }
 
         @JvmStatic
+        fun clearAccessibilityEventCallbacks(runtime: ScriptRuntime) {
+            instance?.clearAccessibilityEventCallbacksForRuntime(runtime)
+        }
+
+        @JvmStatic
+        @Deprecated("Clears callbacks from all runtimes; use clearAccessibilityEventCallbacks(ScriptRuntime) instead.")
         fun clearAccessibilityEventCallback() {
             instance?.eventBox?.clear()
+            synchronized(runtimeEventTypes) {
+                runtimeEventTypes.clear()
+            }
         }
 
         fun setCallback(listener: AccessibilityServiceCallback?) {

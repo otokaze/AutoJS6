@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.stericson.RootShell.RootShell;
 
 import org.autojs.autojs.core.pref.Pref;
+import org.autojs.autojs.runtime.ScriptRuntime;
 import org.autojs.autojs6.R;
 
 import java.text.MessageFormat;
@@ -20,6 +21,7 @@ import java.text.MessageFormat;
 public class RootUtils {
 
     private static String runtimeOverriddenRootMode = RootMode.AUTO_DETECT.key;
+    private static ScriptRuntime runtimeOverriddenBy = null;
 
     public enum RootMode {
         FORCE_ROOT(key(R.string.key_root_mode_force_root), getStringByLocal(R.string.entry_root_mode_force_root, "en")),
@@ -51,19 +53,32 @@ public class RootUtils {
     }
 
     public static void setRootMode(RootMode mode) {
-        setRootMode(mode, false);
+        setRootMode(mode, false, null);
     }
 
     public static void setRootMode(RootMode mode, boolean isWriteInfoPreference) {
+        setRootMode(mode, isWriteInfoPreference, null);
+    }
+
+    public static void setRootMode(RootMode mode, boolean isWriteInfoPreference, ScriptRuntime runtime) {
         if (isWriteInfoPreference) {
             Pref.setRootMode(mode);
         } else {
             runtimeOverriddenRootMode = mode.key;
+            runtimeOverriddenBy = runtime;
+        }
+    }
+
+    public static void resetRuntimeOverriddenRootModeState(ScriptRuntime runtime) {
+        if (runtimeOverriddenBy == null || runtimeOverriddenBy == runtime) {
+            runtimeOverriddenRootMode = RootMode.AUTO_DETECT.key;
+            runtimeOverriddenBy = null;
         }
     }
 
     public static void resetRuntimeOverriddenRootModeState() {
         runtimeOverriddenRootMode = RootMode.AUTO_DETECT.key;
+        runtimeOverriddenBy = null;
     }
 
     public static RootMode getRootMode() {
